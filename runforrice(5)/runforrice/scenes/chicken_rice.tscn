@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyf7sote6lu1s"]
+
+[ext_resource type="Texture2D" uid="uid://d1lehh1cmd1xf" path="res://assests/sprites/ChickenRice.png" id="1_2diua"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3il5"]
+size = Vector2(58, 113)
+
+[node name="ChickenRice" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2diua")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 15)
+shape = SubResource("RectangleShape2D_p3il5")

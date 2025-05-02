@@ -1,0 +1,86 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvnevumpto25j"]
+
+[ext_resource type="Script" uid="uid://8gxpm5npoesx" path="res://scripts/multiplayer/user_ui.gd" id="1_gdt2y"]
+[ext_resource type="Texture2D" uid="uid://2fmb2220wdt" path="res://assests/sprites/Hammer_button.png" id="1_yev5y"]
+[ext_resource type="Texture2D" uid="uid://ceuau62l8oio8" path="res://assests/sprites/paper_button.png" id="2_gdt2y"]
+[ext_resource type="Texture2D" uid="uid://bwj8gpq7uu42i" path="res://assests/sprites/scisscor_button.png" id="3_wm3ai"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="UserUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gdt2y")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UserUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -40.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(3, 3)
+pivot_offset = Vector2(64, 40)
+alignment = 1
+
+[node name="Rock" type="Button" parent="UserUI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("1_yev5y")
+icon_alignment = 1
+
+[node name="Paper" type="Button" parent="UserUI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("2_gdt2y")
+
+[node name="Scissors" type="Button" parent="UserUI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("3_wm3ai")
+
+[node name="ChoiceLabel" type="Label" parent="UserUI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="Waiting" type="Label" parent="UserUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 136.0
+offset_right = 20.0
+offset_bottom = 159.0
+grow_horizontal = 2
+
+[node name="Winner" type="Label" parent="UserUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
