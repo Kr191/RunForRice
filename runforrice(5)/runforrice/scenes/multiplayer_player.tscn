@@ -1,0 +1,120 @@
+[gd_scene load_steps=14 format=3 uid="uid://dfylqoxdfjic4"]
+
+[ext_resource type="Script" path="res://scripts/multiplayer/multiplayer_controller.gd" id="1_80evv"]
+[ext_resource type="Texture2D" uid="uid://5b4c0rg2e8ad" path="res://assests/sprites/knight.png" id="2_2d20i"]
+[ext_resource type="Script" path="res://scripts/multiplayer/user_ui.gd" id="4_x5v6d"]
+[ext_resource type="Texture2D" uid="uid://2fmb2220wdt" path="res://assests/sprites/Hammer_button.png" id="5_8nb61"]
+[ext_resource type="Texture2D" uid="uid://ceuau62l8oio8" path="res://assests/sprites/paper_button.png" id="6_4xu10"]
+[ext_resource type="Texture2D" uid="uid://bwj8gpq7uu42i" path="res://assests/sprites/scisscor_button.png" id="7_0uwrm"]
+[ext_resource type="FontFile" uid="uid://voq7opspnbi4" path="res://assests/fonts/PixelOperator8.ttf" id="7_m4ka2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84sv6"]
+atlas = ExtResource("2_2d20i")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nav0d"]
+atlas = ExtResource("2_2d20i")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06c67"]
+atlas = ExtResource("2_2d20i")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aba8"]
+atlas = ExtResource("2_2d20i")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k8tkd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84sv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nav0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06c67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8aba8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlq18"]
+radius = 5.09902
+
+[node name="MultiplayerPlayer" type="CharacterBody2D"]
+script = ExtResource("1_80evv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k8tkd")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_jlq18")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -49)
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 16.0
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="UserUI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_x5v6d")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/UserUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -40.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(3, 3)
+pivot_offset = Vector2(64, 40)
+alignment = 1
+
+[node name="Rock" type="Button" parent="UI/UserUI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("5_8nb61")
+icon_alignment = 1
+
+[node name="Paper" type="Button" parent="UI/UserUI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("6_4xu10")
+
+[node name="Scissors" type="Button" parent="UI/UserUI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+icon = ExtResource("7_0uwrm")
+
+[node name="Submit" type="Button" parent="UI/UserUI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 799.0
+offset_top = 617.0
+offset_right = 891.0
+offset_bottom = 641.0
+theme_override_fonts/font = ExtResource("7_m4ka2")
+theme_override_font_sizes/font_size = 16
+text = "SUBMIT"
